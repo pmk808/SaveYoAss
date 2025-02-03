@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import HomeScreen from './src/screens/HomeScreen';
 import AddExpenseScreen from './src/screens/AddExpenseScreen';
+import ExpenseListScreen from './src/screens/ExpenseListScreen';
 import { ExpenseProvider } from './src/context/ExpenseContext';
 import { RootStackParamList } from './src/types/navigation';
 
@@ -17,7 +18,7 @@ export default function App() {
       <NavigationContainer>
         <View style={styles.container}>
           <StatusBar style="auto" />
-          <Stack.Navigator 
+          <Stack.Navigator
             initialRouteName="Home"
             screenOptions={{
               headerStyle: {
@@ -29,18 +30,25 @@ export default function App() {
               },
             }}
           >
-            <Stack.Screen 
-              name="Home" 
+            <Stack.Screen
+              name="Home"
               component={HomeScreen}
               options={{
                 title: 'SaveYoAss',
               }}
             />
-            <Stack.Screen 
-              name="AddExpense" 
+            <Stack.Screen
+              name="AddExpense"
               component={AddExpenseScreen}
               options={{
                 title: 'Add Expense',
+              }}
+            />
+            <Stack.Screen
+              name="ExpenseList"
+              component={ExpenseListScreen}
+              options={{
+                title: 'Expenses',
               }}
             />
           </Stack.Navigator>

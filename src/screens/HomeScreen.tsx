@@ -104,13 +104,22 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
         </View>
       </ScrollView>
 
-      {/* Add Expense Button */}
-      <TouchableOpacity 
-        style={styles.addButton}
-        onPress={() => navigation.navigate('AddExpense')}
-      >
-        <Text style={styles.addButtonText}>+ Add Expense</Text>
-      </TouchableOpacity>
+       {/* Action Buttons */}
+       <View style={styles.actionButtons}>
+        <TouchableOpacity 
+          style={[styles.actionButton, styles.listButton]}
+          onPress={() => navigation.navigate('ExpenseList')}
+        >
+          <Text style={styles.actionButtonText}>View All</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity 
+          style={[styles.actionButton, styles.addButton]}
+          onPress={() => navigation.navigate('AddExpense')}
+        >
+          <Text style={styles.actionButtonText}>+ Add</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -224,13 +233,16 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#2d3436',
   },
-  addButton: {
+  actionButtons: {
     position: 'absolute',
     bottom: 24,
     right: 24,
-    backgroundColor: '#00b894',
+    flexDirection: 'row',
+  },
+  actionButton: {
     padding: 16,
     borderRadius: 8,
+    marginLeft: 8,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -240,7 +252,13 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  addButtonText: {
+  listButton: {
+    backgroundColor: '#0984e3',
+  },
+  addButton: {
+    backgroundColor: '#00b894',
+  },
+  actionButtonText: {
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
